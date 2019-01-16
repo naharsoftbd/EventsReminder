@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="demo-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">customer/account/events</argument>
+                    <argument name="label" xsi:type="string">Events Reminder</argument>
+                </arguments>
+				
+            </block>
+			
+        </referenceBlock>
+		<referenceBlock name="customer_account_navigation">
+		<block class="Magento\Framework\View\Element\Html\Link\Current" name="add-events-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">customer/account/addevent</argument>
+                    <argument name="label" xsi:type="string">Add Events</argument>
+                </arguments>
+            </block>
+		</referenceBlock>
+    </body>
+</page>

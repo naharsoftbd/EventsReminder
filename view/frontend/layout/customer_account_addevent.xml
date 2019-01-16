@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Edit account page layout.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/> 
+   <body>
+     <referenceBlock name="page.main.title"> 
+            <action method="setPageTitle"> 
+                <argument translate="true" name="title" xsi:type="string">Add Event</argument> 
+            </action> 
+     </referenceBlock> 
+		<referenceContainer name="content"> 
+        <block class="Magento\EventsReminder\Block\Display" name="events_display" template="Magento_EventsReminder::form/add.phtml"> 
+        </block> 
+    </referenceContainer> 
+    </body>
+</page>

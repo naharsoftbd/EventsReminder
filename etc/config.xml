@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <eventreminder>
+            <general>
+                <enable>1</enable>
+                <display_text>Hello World</display_text>
+				<event_email_template>event_email_template</event_email_template>
+            </general>
+        </eventreminder>
+    </default>
+</config>

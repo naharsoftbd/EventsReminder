@@ -1,0 +1,78 @@
+<style>
+table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
+tr:nth-child(even) { background-color: #dddddd; }
+.post-id{width:2%} .post-name{width:30%}
+
+</style>
+
+<table>
+  <tr>
+    <th class="post-id">Id</th>
+    <th class="post-name">Name</th>
+	<th>Status</th>
+    <th>Events Date</th>
+	<th>Events Reminder Date</th>
+	<th>Friend Email</th>
+	<th>Edit</th>
+	<th>Delete</th>
+  </tr>
+    <?php
+	  
+		$i = 1;
+        foreach ($block->getPostCollection() as $key=>$post){
+			if ($post->getStatus()){
+				$status = "Success";
+			}else{
+				$status = "Pending";
+			}
+			
+            echo '<tr>
+                    <td>'. $i .'</td>
+                    <td>'.$post->getName().'</td>
+					<td>'.$status.'</td>
+                    <td>'.$post->getEventsDate().'</td>
+					<td>'.$post->getEventsReminderDate().'</td>
+					<td>'.$post->getFriendEmail().'</td>
+					<td><a data-eventid="'.$post->getId().'" class="action editevent primary" href="'.$block->getBaseUrl().'customer/account/editevent/?eventid='.$post->getId().'">Edit</a></td>
+					<td><a data-eventid="'.$post->getId().'" class="action eventdelete primary" href="">Delete</a></td>
+                  </tr>';
+				  $i++;
+        }
+    ?>
+</table>
+
+<script>
+    require(['jquery', 'Magento_Ui/js/modal/confirm'],function($, confirmation){
+    jQuery(document).ready(function() {
+		jQuery(".eventdelete").on('click', function(event){
+			var eventid = jQuery(this).data("eventid");            
+            var url = "<?php echo $block->getBaseUrl().'customer/account/deleteevent/' ?>";
+            confirmation({
+             title: 'Are you Sure?',
+             content: 'Want to Delete this Event',
+             actions: {
+                 confirm: function(){
+					 jQuery.ajax({
+						url: url,
+						type: "POST",
+						data: {eventid:eventid},
+						showLoader: true,
+						cache: false,
+						success: function(response){
+							console.log(response.output);
+						}
+					});
+				 },
+                 cancel: function(){
+                   return false;
+                 },
+                 always: function(){}
+             }
+           });
+		   return false;
+       });
+       
+    });
+});
+</script>

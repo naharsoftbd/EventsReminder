@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route frontName="events" id="events">
+            <module name="Magento_EventsReminder"/>
+        </route>
+	<route frontName="customer" id="customer">
+        <module name="Magento_EventsReminder"/>
+    </route>
+    </router>
+</config>
